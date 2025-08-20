@@ -1,85 +1,62 @@
 import { Hero } from '@/components/Hero'
+import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 export function LandingPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-[#f1f5f9] to-[#e0e7ef]">
+    <>
       <Hero />
-      <section id="features" className="max-w-5xl mx-auto px-4 py-16">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-3xl md:text-4xl font-bold mb-6 text-[#1d4ed8]"
-          style={{fontFamily: 'Nunito'}}
+      <section className="container mx-auto px-4 py-14">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-center mb-12"
         >
-          A Fortress for Your Health Data
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-          <FeatureCard 
-            title="Private by Design"
-            description="Your health data stays between us and you. We use advanced encryption and secure cloud storage to keep your information safe—always."
-            icon={
-              <svg width="36" height="36" fill="none" viewBox="0 0 24 24" className="text-[#1d4ed8]">
-                <path d="M12 3l9 4.5v6c0 5.25-4.5 9.75-9 12-4.5-2.25-9-6.75-9-12v-6L12 3z" stroke="currentColor" strokeWidth="1.5" />
-                <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            }
-          />
-          <FeatureCard 
-            title="Effortless Management"
-            description="View appointments, access documents, and manage prescriptions all in one serene dashboard—no technical skills required."
-            icon={
-              <svg width="36" height="36" fill="none" viewBox="0 0 24 24" className="text-[#1d4ed8]">
-                <rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                <rect x="7" y="10" width="10" height="2" rx="1" fill="currentColor" />
-              </svg>
-            }
-          />
-          <FeatureCard 
-            title="24/7 Peace of Mind"
-            description="Medishield Portal stands vigilant—so you can rest easy knowing your health journey is protected, day and night."
-            icon={
-              <svg width="36" height="36" fill="none" viewBox="0 0 24 24" className="text-[#1d4ed8]">
-                <path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="1.5" />
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            }
-          />
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-nunito text-blue-900" style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700 }}>
+            A HIPAA-Compliant Portal for Secure, Connected Care
+          </h2>
+          <p className="mx-auto text-slate-700 text-lg md:text-xl max-w-2xl">
+            ShieldHealth Portal keeps your health information private and your care team connected. Access your records, schedule visits, manage prescriptions, and message providers securely – all in one place.
+          </p>
+        </motion.div>
+        <div className="flex flex-wrap justify-center gap-8 text-center">
+          <motion.div
+            className="bg-white shadow-lg rounded-xl p-6 w-72 border-t-4 border-blue-700"
+            whileHover={{ scale: 1.04 }}
+          >
+            <img src="/branding/assets/logo-1.png" className="w-12 h-12 mx-auto mb-3" />
+            <h3 className="font-bold text-blue-900 mb-1">Medical Records</h3>
+            <p className="text-slate-600 mb-4">Encrypted access to your complete health history, always at your fingertips.</p>
+            <Button asChild variant="outline" id="feature-records-btn" className="w-full">
+              <Link to="/medical-records">View Records</Link>
+            </Button>
+          </motion.div>
+          <motion.div
+            className="bg-white shadow-lg rounded-xl p-6 w-72 border-t-4 border-blue-700"
+            whileHover={{ scale: 1.04 }}
+          >
+            <img src="/branding/assets/logo-2.png" className="w-12 h-12 mx-auto mb-3" />
+            <h3 className="font-bold text-blue-900 mb-1">Appointments</h3>
+            <p className="text-slate-600 mb-4">Book, view, and manage your healthcare appointments in seconds.</p>
+            <Button asChild variant="outline" id="feature-appts-btn" className="w-full">
+              <Link to="/appointments">Schedule Visit</Link>
+            </Button>
+          </motion.div>
+          <motion.div
+            className="bg-white shadow-lg rounded-xl p-6 w-72 border-t-4 border-blue-700"
+            whileHover={{ scale: 1.04 }}
+          >
+            <img src="/branding/assets/logo-0.png" className="w-12 h-12 mx-auto mb-3" />
+            <h3 className="font-bold text-blue-900 mb-1">Secure Messaging</h3>
+            <p className="text-slate-600 mb-4">Safely communicate with your care team via encrypted chat.</p>
+            <Button asChild variant="outline" id="feature-messaging-btn" className="w-full">
+              <Link to="/messaging">Message Provider</Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
-      <motion.section 
-        initial={{ opacity: 0 }} 
-        whileInView={{ opacity: 1 }} 
-        viewport={{ once: true }}
-        transition={{ duration: 0.9 }}
-        className="bg-[#1d4ed8] py-12 mt-16"
-      >
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{fontFamily: 'Nunito'}}>"With Medishield, you are the guardian of your wellbeing."</h3>
-          <p className="text-white/80 text-lg mb-6">Sign up today and discover a new era of secure, patient-centered care. Your journey to peace of mind starts here.</p>
-          <a href="/signup">
-            <button id="footer-signup-cta" className="bg-white text-[#1d4ed8] font-bold px-8 py-3 rounded-md shadow hover:bg-[#f1f5f9] transition">Join Now</button>
-          </a>
-        </div>
-      </motion.section>
-    </main>
-  )
-}
-
-function FeatureCard({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
-  return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }} 
-      whileInView={{ opacity: 1, y: 0 }} 
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center border border-[#e0e7ef] hover:shadow-lg hover:scale-105 transition-all"
-    >
-      <div className="mb-4">{icon}</div>
-      <h4 className="text-xl font-bold text-[#1d4ed8] mb-2" style={{fontFamily: 'Nunito'}}>{title}</h4>
-      <p className="text-[#334155] text-base">{description}</p>
-    </motion.div>
+    </>
   )
 }

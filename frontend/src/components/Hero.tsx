@@ -4,46 +4,41 @@ import { Link } from 'react-router-dom'
 
 export function Hero() {
   return (
-    <motion.section 
-      initial={{ opacity: 0, y: 30 }} 
-      animate={{ opacity: 1, y: 0 }} 
-      transition={{ duration: 0.8 }}
-      className="relative w-full h-[32rem] flex items-center justify-center"
-      style={{ backgroundImage: "url('/branding/assets/hero-0.png')" }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1d4ed8]/80 via-[#94a3b8]/60 to-transparent opacity-80"></div>
-      <div className="relative z-10 max-w-2xl text-center mx-auto px-6 flex flex-col items-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ delay: 0.4, duration: 0.7 }}
-          className="text-white font-bold text-5xl md:text-6xl mb-4 drop-shadow-xl"
-          style={{fontFamily: 'Nunito'}}
-        >
-          Welcome to Medishield Portal
-        </motion.h1>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ delay: 0.7, duration: 0.7 }}
-          className="text-lg md:text-xl text-white/90 mb-8 font-medium"
-        >
-          Where security meets simplicity. Manage your health securely, with confidence and clarity.
-        </motion.p>
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ delay: 1, duration: 0.6 }}
-          className="flex gap-4"
-        >
-          <Button asChild id="get-started-cta" size="lg" className="bg-[#1d4ed8] text-white hover:bg-[#2563eb] font-bold text-lg px-8 rounded-md shadow-lg">
-            <Link to="/signup">Get Started</Link>
-          </Button>
-          <Button asChild variant="outline" id="learn-more-cta" size="lg" className="border-white text-white hover:bg-white/10 px-8 font-bold text-lg rounded-md">
-            <Link to="#features">Learn More</Link>
-          </Button>
-        </motion.div>
+    <section className="w-full relative">
+      <div
+        style={{ backgroundImage: "url('/branding/assets/hero-0.png')" }}
+        className="bg-cover bg-center h-[28rem] md:h-[34rem] flex items-center"
+      >
+        <div className="w-full h-full bg-gradient-to-r from-blue-900/80 via-blue-900/50 to-blue-200/10 flex items-center">
+          <div className="container mx-auto px-4 flex flex-col items-start justify-center h-full">
+            <motion.h1
+              className="text-white text-4xl md:text-5xl font-nunito font-extrabold mb-4 drop-shadow"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700 }}
+            >
+              Secure. Seamless. Empowered.
+              <br />
+              <span className="text-blue-200">Patient Portal</span>
+            </motion.h1>
+            <motion.p
+              className="text-slate-200 text-lg md:text-2xl max-w-xl mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 400 }}
+            >
+              Welcome to ShieldHealth Portal – giving patients and providers the tools they need for secure healthcare access, anytime, anywhere.
+            </motion.p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.6 }}>
+              <Button asChild size="lg" id="cta-get-started" className="bg-blue-700 text-white hover:bg-blue-800 font-bold px-8 py-4 text-lg shadow-lg">
+                <Link to="/signup">Get Started</Link>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   )
 }
