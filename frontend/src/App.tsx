@@ -1,16 +1,16 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navigation } from '@/components/Navigation';
-import { LandingPage } from '@/pages/LandingPage';
-import { HomePage } from '@/pages/HomePage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Navigation } from '@/components/Navigation'
+import { HomePage } from '@/pages/HomePage'
+import { LandingPage } from '@/pages/LandingPage'
 
 export function App() {
   return (
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        {/* Future: Add Login, Signup, Dashboard routes here */}
       </Routes>
     </BrowserRouter>
-  );
+  )
 }

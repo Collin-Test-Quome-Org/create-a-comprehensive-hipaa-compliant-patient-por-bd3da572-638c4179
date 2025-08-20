@@ -1,39 +1,56 @@
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { ShieldCheck } from 'lucide-react';
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu'
+import { Button } from '@/components/ui/button'
+import { LogIn, UserPlus } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+
+const navLinks = [
+  {
+    to: '/',
+    label: '',
+    logo: '/branding/assets/logo-0.png'
+  },
+  {
+    to: '/login',
+    label: 'Login',
+    icon: <LogIn size={18} />
+  },
+  {
+    to: '/signup',
+    label: 'Sign Up',
+    icon: <UserPlus size={18} />
+  },
+]
 
 export function Navigation() {
+  const location = useLocation()
   return (
-    <nav className="w-full bg-white shadow-sm border-b border-slate-200 z-20">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
+    <nav className="w-full bg-white shadow-sm border-b sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-2 flex items-center">
         <NavigationMenu>
-          <NavigationMenuList className="flex items-center gap-6">
+          <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to="/">
-                  <div className="flex items-center gap-2">
-                    <img src="/branding/assets/logo-0.png" className="h-8 w-8" />
-                  </div>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + ' px-2 py-0.5'}>
+                <Link to="/" className="flex items-center gap-2">
+                  <img src={navLinks[0].logo} className="w-9 h-9 rounded-full bg-white shadow" />
+                  <span className="font-bold text-2xl tracking-tight text-[#1d4ed8]" style={{fontFamily: 'Nunito'}}>Medishield Portal</span>
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to="/home">Dashboard</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            <div className="flex ml-8 gap-2">
+              {navLinks.slice(1).map((link) => (
+                <NavigationMenuItem key={link.to}>
+                  <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (location.pathname === link.to ? ' bg-[#1d4ed8] text-white' : '')}>
+                    <Link to={link.to} className="flex items-center gap-1">
+                      {link.icon}
+                      {link.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </div>
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="flex gap-2">
-          <Button asChild id="login-button" variant="outline" className="font-semibold text-slate-900 border-slate-300 hover:bg-slate-100">
-            <Link to="/login">Login</Link>
-          </Button>
-          <Button asChild id="signup-button" className="bg-blue-700 hover:bg-blue-800 text-white font-semibold">
-            <Link to="/signup">Sign Up</Link>
-          </Button>
-        </div>
       </div>
     </nav>
-  );
+  )
 }
